@@ -1,24 +1,28 @@
 <template>
   <section id="imageType" class="image__wrap content__item" :class="attr">
-    <h2>반려식물 키우기</h2>
-    <p>반려식물을 기르는 분들을 위한 사이트 입니다.</p>
+    <h2>{{ top.title }}</h2>
+    <p>{{ top.desc }}</p>
     <div class="image__inner" :class="layout">
-      <article class="image img1">
-        <h3 class="image__title">식물의 종류</h3>
+      <article
+        class="image"
+        :class="text.class"
+        v-for="text in titles"
+        v-bind:key="text.key"
+      >
+        <h3 class="image__title">{{ text.title }}</h3>
         <p class="image__desc">
-          다양한 식물의 종류들을 알아볼 것입니다. 초보자가 기르기 쉬운 식물,
-          공기정화에 탁월한 식물, 선물하기 좋은 식물 등을 알아볼 예...
+          {{ text.desc }}
         </p>
-        <a class="image__btn" href="#" title="자세히 보기">자세히보기</a>
+        <a :class="text.aclass" href="#" title="자세히 보기">{{ text.more }}</a>
       </article>
-      <article class="image img2">
+      <!-- <article class="image img2">
         <h3 class="image__title">인테리어</h3>
         <p class="image__desc">
           식물을 이용한 다양한 인테리어들을 알아볼 것입니다. 식물의 크기에 따른
           공간, 위치 등등이 있습니다. 많은 예시들이 있으니 구경...
         </p>
         <a class="image__btn yellow" href="#" title="자세히 보기">자세히보기</a>
-      </article>
+      </article> -->
     </div>
   </section>
 </template>
@@ -27,6 +31,31 @@ export default {
   props: {
     attr: String,
     layout: String,
+  },
+  data: function () {
+    return {
+      top: {
+        title: "반려식물 키우기",
+        desc: "반려식물을 기르는 분들을 위한 사이트 입니다.",
+      },
+
+      titles: [
+        {
+          title: "식물의 종류",
+          desc: "다양한 식물의 종류들을 알아볼 것입니다. 초보자가 기르기 쉬운 식물, 공기정화에 탁월한 식물, 선물하기 좋은 식물 등을 알아볼 예...",
+          class: "img1",
+          aclass: "image__btn",
+          more: "자세히보기",
+        },
+        {
+          title: "인테리어",
+          desc: "식물을 이용한 다양한 인테리어들을 알아볼 것입니다. 식물의 크기에 따른 공간, 위치 등등이 있습니다. 많은 예시들이 있으니 구경...",
+          class: "img2",
+          aclass: "image__btn yellow",
+          more: "자세히보기",
+        },
+      ],
+    };
   },
 };
 </script>

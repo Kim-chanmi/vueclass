@@ -1,25 +1,39 @@
 <template>
   <section id="imgTextType" class="imgText__wrap content__item" :class="attr">
-    <h2 class="blind">유용한 사이트 살펴보기</h2>
+    <h2 class="blind">{{ top.title }}</h2>
     <div class="imgText__inner" :class="layout">
       <div class="imgText__txt">
-        <span>Plant</span>
-        <h3>식물 관련 칼럼 살펴보기</h3>
-        <p>식물과 관련된 다양한 칼럼과 뉴스들을 살펴보는 공간입니다.</p>
+        <span>{{ top.span }}</span>
+        <h3>{{ top.name }}</h3>
+        <p>{{ top.desc }}</p>
         <ul>
-          <li><a href="#">식물이 병드는 이유</a></li>
-          <li><a href="#">식물이 스트레스 받는 이유</a></li>
-          <li><a href="#">환경 관리</a></li>
-          <li><a href="#">식물 심리테스트</a></li>
-          <li><a href="#">병충해 관리</a></li>
-          <li><a href="#">초보자 매뉴얼</a></li>
+          <li>
+            <a href="#">{{ top.aname1 }}</a>
+          </li>
+          <li>
+            <a href="#">{{ top.aname2 }}</a>
+          </li>
+          <li>
+            <a href="#">{{ top.aname3 }}</a>
+          </li>
+          <li>
+            <a href="#">{{ top.aname4 }}</a>
+          </li>
+          <li>
+            <a href="#">{{ top.aname5 }}</a>
+          </li>
+          <li>
+            <a href="#">{{ top.aname6 }}</a>
+          </li>
         </ul>
       </div>
-      <div class="imgText__img img1">
-        <a href="#">초보자 매뉴얼</a>
-      </div>
-      <div class="imgText__img img2">
-        <a href="#" class="blue">식물 심리테스트</a>
+      <div
+        class="imgText__img"
+        :class="text.class"
+        v-for="text in titles"
+        v-bind:key="text.key"
+      >
+        <a href="#" :class="text.aclass">{{ text.aname }}</a>
       </div>
     </div>
   </section>
@@ -29,6 +43,35 @@ export default {
   props: {
     attr: String,
     layout: String,
+  },
+
+  data: function () {
+    return {
+      top: {
+        title: "유용한 사이트 살펴보기",
+        span: "Plant",
+        name: "식물 관련 칼럼 살펴보기",
+        desc: "식물과 관련된 다양한 칼럼과 뉴스들을 살펴보는 공간입니다.",
+        aname1: "식물이 병드는 이유",
+        aname2: "식물이 스트레스 받는 이유",
+        aname3: "환경 관리",
+        aname4: "식물 심리테스트",
+        aname5: "병충해 관리",
+        aname6: "초보자 매뉴얼",
+      },
+      titles: [
+        {
+          class: "img1",
+          aclass: "",
+          aname: "초보자 매뉴얼",
+        },
+        {
+          class: "img2",
+          aclass: "blue",
+          aname: "식물 심리테스트",
+        },
+      ],
+    };
   },
 };
 </script>
