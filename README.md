@@ -19,3 +19,4 @@ https://vueclass13.web.app/
 ## 1차 완성 : 컴퍼넌트 사용, props 사용, swiper 사용
 
 https://vueclass13.web.app/
+https://vueclass13.web.app/
